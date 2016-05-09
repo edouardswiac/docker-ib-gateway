@@ -1,4 +1,4 @@
-FROM orgsync/java8
+FROM java/8
 MAINTAINER clifton <cliftonk@gmail.com>
 
 # install xvfb and other X dependencies for IB
@@ -11,9 +11,9 @@ RUN mkdir /ib-gateway
 WORKDIR /ib-gateway
 
 # download and install the IB-gateway
-RUN wget -O total.jar -q https://download2.interactivebrokers.com/java/classes/total.2015.jar \
-    && wget -O jts.jar -q https://download2.interactivebrokers.com/java/classes/latest/jts.latest.jar
-
+#RUN wget -O total.jar -q https://download2.interactivebrokers.com/java/classes/total.2015.jar \
+#    && wget -O jts.jar -q https://download2.interactivebrokers.com/java/classes/latest/jts.latest.jar
+RUN  wget -O twsapi.jar http://interactivebrokers.github.io/downloads/twsapi_macunix.971.01.jar
 # install init scripts and binaries
 ADD config/jts.ini /ib-gateway/jts.ini
 ADD init/xvfb_init /etc/init.d/xvfb
